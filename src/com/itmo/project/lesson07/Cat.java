@@ -7,6 +7,10 @@ public class Cat {
 
     public Cat(){}
 
+    public Cat(int weight) {
+        setWeight(weight);
+    }
+
     public Cat(String name, int weight) {
         setName(name);
         setWeight(weight);
@@ -19,7 +23,7 @@ public class Cat {
     }
 
     public void setWeight(int weight) {
-        if(weight<1&&weight>8) return;
+        if(weight<1||weight>8) return;
         this.weight = weight;
     }
 
@@ -28,12 +32,11 @@ public class Cat {
     }
     public boolean attack (Cat attacking){
         if (attacking==null) return false;
-        Cat cat = new Cat("Защитник", 8);
-        if (cat.weight<attacking.weight){
+        if (this.weight<attacking.weight){
             attacking.victoryCount++;
             return true;
         } else {
-            cat.victoryCount++;
+            this.victoryCount++;
             return false;
         }
 

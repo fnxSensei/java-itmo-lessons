@@ -12,7 +12,7 @@ public class Book {
     // значение numberOfAuthors должно находиться в диапазоне [1, 5)
     public Book(String name, int numberOfAuthors) {
         setName(name);// вызов метода внутри класса
-        if (numberOfAuthors<1 && numberOfAuthors>4) return;
+        if (numberOfAuthors>1 && numberOfAuthors<4) return;
         authors = new Author[numberOfAuthors];
 
     }
@@ -38,14 +38,11 @@ public class Book {
         // author не может быть null ссылкой
         // новые авторы не должны перезаписывать уже существующих в массиве
         if (author==null) return;
-        int count=0;
-        if (count<authors.length) {
-            for (Author searchAutor : authors){
-                if (searchAutor.equals(author)) break;
-                else authors[count] = author;
-            }
-            count++;
-        }else return;
+        for (int index = 0; index < authors.length; index++) {
+            if (authors[index].equals(author)) return;
+            authors[index]=author;
+            
+        }
 
 
     }
