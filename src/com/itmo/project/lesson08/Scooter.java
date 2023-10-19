@@ -7,11 +7,13 @@ package com.itmo.project.lesson08;
 //Значения isElectric и максимальная скорость всегда устанавливается через конструктор.
 //Количество колёс самоката всегда равно 2, а тип - "Городской".
 //Реализация метода repair: если самокат электрический, уровень износа уменьшается на 2, в противном случае на 3, но не меньше 0
-public class Scooter extends Bicycle{
+public class Scooter extends Bicycle implements SetColor{
     private boolean isElectric;
+    private String color;
 
     public Scooter(String number, int maxSpeed, boolean isElectric) {
         super(number, maxSpeed);
+        this.isElectric=isElectric;
         System.out.println(getNumberOfWheels()+ " " + getType());
     }
 
@@ -22,5 +24,15 @@ public class Scooter extends Bicycle{
             else wear-=3;
 
         }
+    }
+
+    @Override
+    public void changeColor(String color) {
+
+    }
+
+    @Override
+    public void defColor() {
+
     }
 }

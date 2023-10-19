@@ -1,6 +1,6 @@
 package com.itmo.project.lesson08;
 
-public class Vehicle {
+abstract public class Vehicle {
    protected String number;
    protected int wear;
    protected int maxSpeed=120;

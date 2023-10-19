@@ -7,7 +7,7 @@ package com.itmo.project.lesson08;
 //В классе добавить возможность изменения цвета.
 //Необходимо реализовать класс таким образом, чтобы значение по умолчанию для максимальной скорости было рано 240.
 //Реализация метода repair: уменьшение уровня износа на 1, но не меньше 0
-public class Car extends Vehicle{
+public class Car extends Vehicle implements SetColor{
     private String color = "белый";
 
     public Car(String number) {
@@ -29,8 +29,14 @@ public class Car extends Vehicle{
         this.color = color;
     }
 
+
     @Override
-    public void repair() {
-        super.repair();
+    public void changeColor(String color) {
+
+    }
+
+    @Override
+    public void defColor() {
+
     }
 }

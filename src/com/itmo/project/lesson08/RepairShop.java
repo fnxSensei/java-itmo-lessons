@@ -1,5 +1,7 @@
 package com.itmo.project.lesson08;
 
+import java.util.Random;
+
 //Задача #3
 //Дописать класс RepairShop:
 //
@@ -9,6 +11,7 @@ package com.itmo.project.lesson08;
 //после ремонта машины менять её цвет на произвольный из массива colors
 //после ремонта ссылку на транспортное средство необходимо обнулять
 public class RepairShop {
+    SetColor setColor;
     private Vehicle[] vehicles;
     private String[] colors = {"красный", "жёлтый", "оранжевый", "чёрный"};
 
@@ -22,21 +25,25 @@ public class RepairShop {
 
     public void addToVehicles(Vehicle vehicle) {
         for (int i = 0; i < vehicles.length; i++) {
-            vehicles[i]=vehicle;
+            if (vehicles[i] == null) {
+                vehicles[i] = vehicle;
+                return;
+            }
         }
 
     }
-    public int changeColor (){
-        int n = (int)Math.floor(Math.random() * colors.length);
-       return n;
+
+    public int changeColor() {
+        int n = (int) Math.floor(Math.random() * colors.length);
+        return n;
     }
 
 
     public void repairAll() {
-        for (Vehicle vehicle : vehicles) {
+        for (int i = 0; i < vehicles.length; i++) {
             // для вызова доступны только методы супертипа, т.е. Vehicle
             // но будет использована реализация конкретного подтипа
-            vehicle.repair();
+            vehicles[i].repair();
             // оператор instanceof вернет true,
             // если экземпляр (слева) принадлежит указанному справа типу
             /*if (vehicle instanceof Train) {
@@ -45,13 +52,18 @@ public class RepairShop {
             }*/
             // проверка на принадлежность типу + приведение
             // аналогично предыдущей записи
-            if (vehicle instanceof Car car) {
-                changeColor();
+            if (vehicles[i] instanceof Car car) {
+                car.setColor(colors[changeColor()]);
             }
-//            if (vehicle instanceof Vehicle vehicle1){
-//                vehicle==null;
-//            }
+
+            Random random = new Random();
+            if (vehicles[i] instanceof SetColor setColor) {
+                setColor.changeColor(colors[random.nextInt(colors.length)]);
+            }
+
+            vehicles[i] = null;
 
         }
     }
+
 }
