@@ -3,7 +3,8 @@ package com.itmo.project.lesson10.animals;
 public class WildAnimal extends Animal{
     private int strength;
 
-    public WildAnimal(int strength) {
+    public WildAnimal(String name, double age, int strength) {
+        super(name, age);
         this.strength = strength;
     }
 

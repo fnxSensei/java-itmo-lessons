@@ -12,8 +12,8 @@ public class Wolf extends WildAnimal{
     private final String color;
 
 
-    public Wolf(int strength, String[] likeToEat, String color) {
-        super(strength);
+    public Wolf(String name, double age, int strength, String[] likeToEat, String color) {
+        super(name, age,strength);
         this.likeToEat = likeToEat;
         this.color = color;
     }
@@ -27,7 +27,8 @@ public class Wolf extends WildAnimal{
 
         // Probably incorrect - comparing Object[] arrays with Arrays.equal
         if (!Arrays.equals(likeToEat, wolf.likeToEat)) return false;
-        return Objects.equals(color, wolf.color) && Objects.equals(getStrength(), wolf.getStrength());
+        return Objects.equals(color, wolf.color) && Objects.equals(getStrength(), wolf.getStrength())
+                && Objects.equals(getName(), wolf.getName()) && Objects.equals(getAge(), wolf.getAge());
     }
 
     @Override
