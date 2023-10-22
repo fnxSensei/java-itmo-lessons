@@ -40,8 +40,8 @@ public class Lesson10 {
 ////        }
 //        auth.login(username, password);
 
-        Wolf wolf01=new Wolf(new String[]{"Мясо", "Рыба"}, "Серый");
-        Wolf wolf02=new Wolf(new String[]{"Мясо", "Рыба", "Ягоды"}, "Серый");
+        Wolf wolf01=new Wolf(12, new String[]{"Мясо", "Рыба"}, "Серый");
+        Wolf wolf02=new Wolf(12, new String[]{"Мясо", "Рыба"}, "Серый");
         System.out.println(wolf01.equals(wolf02));
 
 
