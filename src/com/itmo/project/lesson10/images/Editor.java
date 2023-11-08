@@ -21,7 +21,9 @@ public final class Editor implements Cloneable{
 
     public Editor clone(){
         try {
+
             return (Editor) super.clone();
+
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }

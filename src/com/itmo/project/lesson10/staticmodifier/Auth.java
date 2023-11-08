@@ -1,6 +1,8 @@
 package com.itmo.project.lesson10.staticmodifier;
 
-public interface Auth {
+public sealed interface Auth // sealed - ограничение ( заблокирован)
+permits GAuth, AppAuth { // permits - Разрешение ( от интерфейса будут
+    // имплементироваться только GAuth, AppAuth)
     boolean login(String username, String password);
     boolean logout();
 

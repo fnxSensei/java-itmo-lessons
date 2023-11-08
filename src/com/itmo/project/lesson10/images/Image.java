@@ -16,4 +16,6 @@ public class Image implements Drawable {
         System.out.println(path);
     }
 
+
+
 }
