@@ -39,7 +39,7 @@ public class Fruit {
         Fruit fruit = (Fruit) o;
 
         if (Double.compare(price, fruit.price) != 0) return false;
-        if (count != fruit.count) return false;
+        //if (count != fruit.count) return false;
         return type == fruit.type;
     }
 

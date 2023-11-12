@@ -66,5 +66,9 @@ public class GenericMethod {
         rawUser.setId(stringUser);
         System.out.println(rawUser.getId().toString());
 
+        PairContainer pairContainer = new PairContainer(12, "Java");
+        PairContainer pairContainer2 = new PairContainer("Строка", new User<>(12));
+        PairContainer pairContainer3 = new PairContainer("Строкa", new PairContainer<>(12, new User<>("Строка")));
+
     }
 }
