@@ -37,4 +37,5 @@ abstract public class Vehicle {
     public void repair (){
         if (wear>0) wear--;
     }
+
 }

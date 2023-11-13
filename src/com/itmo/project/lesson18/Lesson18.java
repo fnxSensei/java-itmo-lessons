@@ -1,5 +1,6 @@
 package com.itmo.project.lesson18;
 
+import com.itmo.project.lesson08.Vehicle;
 import com.itmo.project.lesson14.PairContainer;
 import com.itmo.project.lesson15.Fruit;
 

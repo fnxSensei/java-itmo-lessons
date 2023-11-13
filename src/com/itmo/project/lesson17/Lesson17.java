@@ -1,5 +1,11 @@
 package com.itmo.project.lesson17;
 
+import com.itmo.project.lesson14.properties.service.RepairShop;
+import com.itmo.project.lesson14.properties.service.Service;
+import com.itmo.project.lesson14.properties.service.vehicle.Repaintable;
+import com.itmo.project.lesson14.properties.service.vehicle.Vehicle;
+
+import java.security.Key;
 import java.util.*;
 
 public class Lesson17 {
@@ -204,4 +210,41 @@ public class Lesson17 {
             out[i]=strings.get(i);
         System.out.println(Arrays.deepToString(out));
     }
+
+    //Написать метод, принимающий на вход мапу и уровень износа. Ключи мапы - номера транспортных средств,
+    // значения - любые транспортные средства. Метод возвращает список транспортных средств,
+    // уровень износа которых больше переданного в метод.
+    private static <T extends Vehicle> List<T> arrayListWearHigh (Map<String, T> vehicleTMap, int wearVehicle) {
+        List<T> tList = new ArrayList<>();
+        for (Map.Entry<String, T> e: vehicleTMap.entrySet()) {
+            T wear = e.getValue();
+            if (wear.getLevelOfWare() > wearVehicle){
+                tList.add(wear);
+            }
+        }
+        return tList;
+    }
+
+    //Написать метод, принимающий на вход список перекрашиваемых объектов и мапу, где ключи - цвета,
+    // а значения - списки покрашенных в данный цвет объектов. В методе необходимо наполнить мапу элементами списка.
+
+    private static void mapChangeColor (List<? extends Service> listChangeColor, EnumMap<Repaintable.Color, List<? super RepairShop>> enumMap){
+        for (int i = 0; i < listChangeColor.size(); i++) {
+            listChangeColor.get(i).startRepair();
+        }
+    }
+    //Написать метод, принимающий на вход список ремонтируемых транспортных средств и возвращающий мапу,
+    // где ключи - номера транспортных средств, а значения - любые транспортные средства.
+    // В методе необходимо вызвать метод repair транспортного средства, после чего добавить транспортное средство
+    // в результирующую мапу.
+
+    private static <T extends Vehicle> Map<String, T> repairVehicleByMap (List<T> listVehicleRepair){
+        Map<String, T> mapRepair = new HashMap<>();
+        for (int i = 0; i < listVehicleRepair.size(); i++) {
+            listVehicleRepair.get(i).repair();
+            mapRepair.put(listVehicleRepair.get(i).getNumber(), listVehicleRepair.get(i));
+        }
+        return mapRepair;
+    }
+
 }
