@@ -6,6 +6,7 @@ import com.itmo.project.lesson15.Fruit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -21,6 +22,12 @@ public class Lesson18 {
         Operation min = (a, b) -> a<b?a:b;
         printResult(min, 12.3,9.9);
         printResult((a, b) -> a<b?a:b, 12.3, 9.9);
+
+        Operation operation=plus
+                .addOperation(minus)
+                .addOperation(div)
+                .addOperation(sub);
+        System.out.println(operation.action(12.4, 5.7));
 
         ArrayList<Integer> integers = new ArrayList<>(Arrays.asList(875, -78, 12, 56, 34, -89, 0, 344));
         //Predicate<T> : boolean test(T t)
@@ -54,6 +61,14 @@ public class Lesson18 {
         fruits.forEach(line -> line.setPrice(line.getPrice()*2));
 
         Predicate<Fruit> filter = fruit -> fruit.getPrice()>100;
+        filter.test(new Fruit(Fruit.FruitType.BANANA, 233, 10));
+
+        //Comparator<T> int compare(T o1, T o2);
+        Comparator<Fruit> comparatorByPrice = ((o1, o2) -> (int) (o1.getPrice() - o2.getPrice()));
+        Comparator<Fruit> compareByCount = (f1, f2) -> f2.getCount()-f1.getCount();
+        fruits.sort(comparatorByPrice);
+        fruits.sort(comparatorByPrice.thenComparing(compareByCount));
+
     }
 
     private static <T extends  Fruit> ArrayList<T> filterFruits (ArrayList<T> fruits, Predicate<? super T> filter) {
