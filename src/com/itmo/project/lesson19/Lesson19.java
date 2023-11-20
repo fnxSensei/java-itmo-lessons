@@ -1,4 +1,4 @@
-package com.itmo.project;
+package com.itmo.project.lesson19;
 
 import com.itmo.project.lesson14.properties.service.vehicle.*;
 
@@ -52,5 +52,35 @@ public class Lesson19 {
                 new Car(Repaintable.Color.BLACK, "006"),
                 new MiniCar(Repaintable.Color.ORANGE, "007")
         );
+
+        //2.1
+        List<String> sortedVehicles = vehicles.stream().
+                sorted((o1, o2) -> o2.getLevelOfWare() - o1.getLevelOfWare())
+                .map(vehicle -> vehicle.getNumber())
+                .toList();
+
+        //2/2
+
+        int sumLevelOfWare = vehicles.stream()
+                .mapToInt(vehicle -> vehicle.getLevelOfWare()).sum();
+
+        //2.3
+
+//        vehicles.stream()
+//                .peek(vehicle -> vehicle.changeColor(Repaintable.Color.GOLD))
+//                .forEach(System.out::println);
+
+
+
+
+
+            // void accept(T t);
+        vehicles.stream().peek(vehicle -> vehicle.repair());
+        // R apply(T t);
+        vehicles.stream().map(vehicle -> {
+            vehicle.repair();
+            return vehicle.getLevelOfWare();
+        });
+
     }
 }
