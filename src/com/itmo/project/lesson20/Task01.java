@@ -30,14 +30,15 @@ public class Task01 {
                         Collectors.toCollection(ArrayList::new)));
 
 
+
         //  2. Найти средний возраст учеников
         double avg = students.stream()
-                .mapToInt(student -> {
+                .mapToDouble(student -> {
                     LocalDate current = LocalDate.now();
                     LocalDate studentBirth = student.getBirth();
                     return Period.between(studentBirth, current).getYears();
                 })
-                .average().getAsDouble();
+                .average().getAsDouble(); //orElse(0);
 
 
         //  3. Найти самого младшего ученика - Stream -> min(Comparator<Student>): int compare(T o1, T o2);
@@ -55,8 +56,8 @@ public class Task01 {
 
         Map<Integer, List<Student>> groupByBirth = students.stream()
                 .collect(Collectors.groupingBy(
-                        student -> student.getBirth().getYear(),
-                        Collectors.toCollection(ArrayList::new)));
+                        student -> student.getBirth().getYear()));
+                        //Collectors.toCollection(ArrayList::new)));
         System.out.println(groupByBirth);
 
         //  6. Отсортировать по полу, дате рождения, имени (в обратном порядке), собрать в список (ArrayList)
